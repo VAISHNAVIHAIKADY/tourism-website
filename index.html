@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ಯಕ್ಷ ದೇದಿಪ್ಯ | Yaksha Dedeepya</title>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #000, #3b0000);
+      color: #FFD700;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      min-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /*  Namaste top corner */
+    #welcome {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 1.1em;
+      font-weight: 600;
+      color: #FFD700;
+      text-shadow: 0 0 10px gold, 0 0 25px orange;
+    }
+
+    /*  Main content */
+    .main {
+      margin-top: 150px;
+      flex-grow: 1;
+    }
+
+    /* ✨ Rotating Logo Animation */
+    .logo {
+      width: 200px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 0 25px gold, 0 0 45px orange;
+      margin-bottom: 20px;
+      animation: spin 10s linear infinite;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 0 0 25px gold, 0 0 45px orange;
+    }
+
+    p {
+      font-size: 1.1em;
+      width: 80%;
+      margin: 15px auto;
+      color: #FFD700;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      color: gold;
+      background: transparent;
+      border: 2px solid gold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+
+    button:hover {
+      background: gold;
+      color: #3b0000;
+      box-shadow: 0 0 25px gold;
+      transform: scale(1.1);
+    }
+
+    /* 🌙 Footer Section */
+    footer {
+      background: rgba(255, 215, 0, 0.05);
+      border-top: 1px solid gold;
+      color: #FFD700;
+      padding: 15px;
+      font-size: 0.9em;
+      text-shadow: 0 0 10px gold;
+      letter-spacing: 0.5px;
+    }
+
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: orange;
+      text-shadow: 0 0 10px orange;
+    }
+  </style>
+</head>
+
+<body>
+  <!--  Namaste--->
+  <div id="welcome"> ಸ್ವಾಗತ </div>
+
+  <!-- Main Section -->
+  <div class="main">
+    <img src="logo123.jpeg" alt="Yaksha Dedeepya Logo" class="logo">
+    <h1>ಯಕ್ಷ ದೇದಿಪ್ಯ - Yaksha Dedeepya</h1>
+    <p>
+      <br>“ದೊಂದಿ ಬೆಳಕಿನ ಯಕ್ಷಗಾನ” ಹಳೆಯ ಪರಂಪರೆ ಮತ್ತು ಹೊಸ ಪೀಳಿಗೆ ನಡುವೆ ಸೇತುವೆಯಂತೆ ನಿಂತು — ಚೆಂಡೆಯ ನಾದ, ಮದ್ದಳೆಯ ರಾಗ, ವೇಷದ ಶಕ್ತಿ ಇವೆಲ್ಲವನ್ನು ಮುಂದಿನ ಪೀಳಿಗೆಗೆ ಸಾಗಿಸುತ್ತಿದೆ.</br>
+      ಯಕ್ಷಗಾನಂ ಗೆಲ್ಗೆ, ಯಕ್ಷಗಾನಂ ಬೆಳ್ಗೆ!
+    </p>
+    <button onclick="window.location.href='login.html'">Enter Experience</button>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 ಯಕ್ಷ ದೇದಿಪ್ಯ | VAISHNAVI HAIKADY</a> <br>
+    <span>Powered by Smart Creations Education Trust ®</span>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin | Yaksha Dedeepya</title>
+  <style>
+    body{margin:0;background:radial-gradient(circle at top,#000,#3b0000);color:#FFD700;font-family:Poppins, sans-serif;padding:22px}
+    table{width:100%;border-collapse:collapse;background:rgba(255,215,0,0.03); border:1px solid gold}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,215,0,0.06); text-align:left}
+    th{background:rgba(255,215,0,0.08)}
+    .top{display:flex;gap:10px;align-items:center;justify-content:space-between; margin-bottom:12px}
+    button{padding:8px 14px;border-radius:8px;border:1px solid gold;background:transparent;color:gold;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <h2>Visitor Comments</h2>
+    <div>
+      <button id="adminSignOut">Sign Out</button>
+    </div>
+  </div>
+
+  <table id="tbl">
+    <thead>
+      <tr><th>Name</th><th>Form Email</th><th>Message</th><th>User Email (Logged-in)</th><th>Time</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7V2M4yIpGrHUoBk7dQWDON0PqwuDqXuQ",
+      authDomain: "dondi-belakina-yakshagana.firebaseapp.com",
+      projectId: "dondi-belakina-yakshagana",
+      storageBucket: "dondi-belakina-yakshagana.firebasestorage.app",
+      messagingSenderId: "111860501983",
+      appId: "1:111860501983:web:e9bc7a4ebff710cf06886a",
+      measurementId: "G-Z2NL0GR5B2"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const tbody = document.querySelector('#tbl tbody');
+    const adminEmail = 'youradmin@gmail.com'; // <-- REPLACE with your real admin gmail
+
+    async function loadComments(){
+      tbody.innerHTML = '';
+      const q = query(collection(db,'comments'), orderBy('createdAt','desc'));
+      const snap = await getDocs(q);
+      snap.forEach(doc => {
+        const d = doc.data();
+        const time = d.createdAt && d.createdAt.toDate ? d.createdAt.toDate().toLocaleString() : '';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${d.name||''}</td><td>${d.email||''}</td><td>${d.message||''}</td><td>${d.userEmail||''}</td><td>${time}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // require admin sign in to view
+    onAuthStateChanged(auth, user => {
+      if (!user) {
+        // sign in
+        signInWithPopup(auth, provider).catch(e=> { alert('Admin signin failed: '+e.message); });
+        return;
+      }
+      if (user.email !== adminEmail) {
+        alert('You are not authorized as admin. Please sign in with admin email.');
+        signOut(auth).then(()=> location.href='login.html');
+        return;
+      }
+      loadComments();
+    });
+
+    document.getElementById('adminSignOut').addEventListener('click', async ()=>{
+      await signOut(auth);
+      location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

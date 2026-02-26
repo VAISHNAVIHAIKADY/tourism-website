@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ಸಂಪರ್ಕಿಸಿ | Yaksha Dedeepya</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      background: radial-gradient(circle at top, #000, #3b0000);
+      color: #FFD700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px 15px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.3em;
+      text-shadow: 0 0 25px gold, 0 0 45px orange;
+      margin-bottom: 20px;
+    }
+
+    .contact-box {
+      background: rgba(255, 215, 0, 0.05);
+      border: 1px solid gold;
+      border-radius: 15px;
+      padding: 25px;
+      width: min(700px, 95%);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+    }
+
+    .info {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #FFD700;
+      line-height: 1.8;
+    }
+
+    .upi-section {
+      margin-top: 20px;
+    }
+
+    img.qr {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      margin: 15px auto;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    img.qr:hover { transform: scale(1.05); }
+
+    .upi-id {
+      font-size: 1em;
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 12px 25px;
+      background: transparent;
+      border: 2px solid gold;
+      color: gold;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: gold;
+      color: #3b0000;
+      box-shadow: 0 0 25px gold;
+    }
+
+    .yt-link {
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+
+    .yt-link a {
+      color: #FFD700;
+      text-decoration: none;
+      border-bottom: 1px solid gold;
+      transition: 0.3s;
+    }
+
+    .yt-link a:hover {
+      color: #ffae00;
+      text-shadow: 0 0 15px gold;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #FFD700;
+    }
+
+    .continue-btn {
+      margin-top: 30px;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    @keyframes starMove {
+      from { transform: translateY(0) scale(1); opacity: 1; }
+      to { transform: translateY(100vh) scale(0); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars" id="stars"></div>
+
+  <h1>ಸಂಪರ್ಕಿಸಿ / Contact Us</h1>
+
+  <div class="contact-box">
+    <div class="info">
+      <p>ಅಧ್ಯಕ್ಷರು : <b>ಶ್ರೀ ಕೃಷ್ಣಮೂರ್ತಿ ಹೈಕಾಡಿ</b></p>
+      <p>ಕಾರ್ಯದರ್ಶಿ : <b>ಶ್ರೀ ಮಹೇಶ್ ಹೈಕಾಡಿ</b></p>
+      <p>ಕೋಶಾಧಿಕಾರಿ : <b>ಶ್ರೀ ಶಂಕರ್ ಹೈಕಾಡಿ</b></p>
+      <p>ಸರ್ವ ಸದಸ್ಯರು : <b>ಸ್ಮಾರ್ಟ್ ಕ್ರಿಯೇಶನ್ ಎಜ್ಯುಕೇಶನ್ ಟ್ರಸ್ಟ್ (ರಿ.) ಹೈಕಾಡಿ ಉಡುಪಿ ಜಿಲ್ಲೆ</b></p>
+      <p>📧 Email: <a href="mailto:krish682692@gmail.com">krish682692@gmail.com</a></p>
+      <p>📞 Phone: <a href="tel:+919743682692">+91 9743682692</a></p>
+    </div>
+
+    <div class="upi-section">
+      <p class="upi-id">💰 ಬೆಂಬಲಿಸಲು / To Support:</p>
+      <img src="QR.jpeg" alt="UPI QR" class="qr" id="qrCode" title="Tap to Download QR">
+      <p>UPI ID: <b>krish682692@ybl</b></p>
+      <button onclick="window.location.href='upi://pay?pa=krish682692@ybl&pn=Yaksha%20Dedeepya&cu=INR'">
+        Pay with UPI 💵
+      </button>
+    </div>
+
+    <div class="yt-link">
+      🎥 <a href="https://youtube.com/@smartcreationseducationtru7098" target="_blank">Visit our YouTube Channel</a>
+    </div>
+  </div>
+
+  <div class="continue-btn">
+    <button onclick="window.location.href='thankyou.html'">➡ ಮುಂದುವರಿಸಿ / Continue</button>
+  </div>
+
+  <footer>
+    © 2025 ಯಕ್ಷ ದೇದಿಪ್ಯ | VAISHNAVI HAIKADY <br>
+    Powered by Smart Creations Education Trust ®
+  </footer>
+
+  <script>
+    // Floating stars background
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 50; i++) {
+      const star = document.createElement('span');
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * -100 + 'vh';
+      star.style.position = 'absolute';
+      star.style.width = '2px';
+      star.style.height = '2px';
+      star.style.background = 'gold';
+      star.style.animation = 'starMove 6s linear infinite';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // ✅ Allow QR to download when clicked
+    const qr = document.getElementById('qrCode');
+    qr.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = qr.src;
+      link.download = 'YakshaDedeepya-UPI-QR.jpeg';
+      link.click();
+    });
+  </script>
+</body>
+</html>

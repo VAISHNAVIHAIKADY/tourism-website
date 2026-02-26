@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Yaksha Dedeepya</title>
+
+  <style>
+    /* ------------------------------------------
+       Yaksha Dedeepya Login Page (Final Version)
+       Fixed signup & handcrafted by developer.
+    ------------------------------------------- */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1a0000, #3b0000 70%, #000);
+      color: #FFD700;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      width: 320px;
+      padding: 30px 25px;
+      border: 1px solid gold;
+      border-radius: 15px;
+      text-align: center;
+      background: rgba(255, 215, 0, 0.06);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.25);
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px gold, 0 0 25px orange;
+    }
+
+    p {
+      color: #ffed9f;
+      font-size: 0.95em;
+      margin-bottom: 18px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid gold;
+      background: transparent;
+      color: gold;
+      font-size: 0.95em;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    input:focus {
+      border-color: orange;
+      box-shadow: 0 0 10px orange;
+    }
+
+    button {
+      width: 94%;
+      padding: 10px;
+      margin-top: 12px;
+      border: 2px solid gold;
+      background: transparent;
+      color: gold;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: gold;
+      color: #3b0000;
+      transform: scale(1.04);
+      box-shadow: 0 0 20px gold, 0 0 35px orange;
+    }
+
+    #statusMsg {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: orange;
+      min-height: 20px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.8em;
+      color: #FFD700;
+      text-shadow: 0 0 8px gold;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Login / Sign In</h2>
+    <p>Use your valid Gmail ID to continue</p>
+
+    <input type="text" id="name" placeholder="Your Name" required />
+    <input type="email" id="email" placeholder="Your Gmail" required />
+    <input type="password" id="password" placeholder="Password (min 6 chars)" required />
+
+    <button id="signupBtn">Sign Up</button>
+    <button id="loginBtn">Login</button>
+    <button id="googleBtn">Continue with Google</button>
+
+    <div id="statusMsg"></div>
+  </div>
+
+  
+    <footer> © 2025 ಯಕ್ಷ ದೇದಿಪ್ಯ | VAISHNAVI HAIKADY</a> <br>
+    <span>Powered by Smart Creations Education Trust ®</span></footer>
+
+ 
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
+    import {
+      getAuth,
+      GoogleAuthProvider,
+      signInWithPopup,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC7V2M4yIpGrHUoBk7dQWDON0PqwuDqXuQ",
+      authDomain: "dondi-belakina-yakshagana.firebaseapp.com",
+      projectId: "dondi-belakina-yakshagana",
+      storageBucket: "dondi-belakina-yakshagana.appspot.com",
+      messagingSenderId: "111860501983",
+      appId: "1:111860501983:web:fc3d479581c16aab06886a",
+      measurementId: "G-FEWJJ5W3MW",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    getAnalytics(app);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const msg = document.getElementById("statusMsg");
+
+    // Disable Back Navigation
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = () => window.history.pushState(null, "", window.location.href);
+
+    // 🔹 Google Login
+    document.getElementById("googleBtn").addEventListener("click", async () => {
+      msg.textContent = "Connecting with Google...";
+      try {
+        const result = await signInWithPopup(auth, provider);
+        msg.textContent = `Welcome, ${result.user.displayName}!`;
+        setTimeout(() => (window.location.href = "about.html"), 1200);
+      } catch (err) {
+        msg.textContent = "Google sign-in failed.";
+      }
+    });
+
+    // 🔹 Email Sign-Up (Fixed)
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password || !name) {
+        msg.textContent = "All fields are required.";
+        return;
+      }
+
+      if (!email.includes("@")) {
+        msg.textContent = "Please use a valid Gmail address.";
+        return;
+      }
+
+      msg.textContent = "Creating your account...";
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        await addDoc(collection(db, "users"), {
+          name,
+          email,
+          userId: user.uid,
+          createdAt: serverTimestamp(),
+        });
+
+        msg.textContent = "Account created successfully!";
+        setTimeout(() => (window.location.href = "about.html"), 1500);
+      } catch (err) {
+        if (err.code === "auth/email-already-in-use") {
+          msg.textContent = "This email is already registered.";
+        } else if (err.code === "auth/weak-password") {
+          msg.textContent = "Password must be at least 6 characters.";
+        } else {
+          msg.textContent = "Signup error: " + err.message.replace("Firebase:", "").trim();
+        }
+      }
+    });
+
+    // 🔹 Email Login
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        msg.textContent = "Please enter both email and password.";
+        return;
+      }
+
+      msg.textContent = "Verifying credentials...";
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        msg.textContent = "✅ Login successful!";
+        setTimeout(() => (window.location.href = "about.html"), 1200);
+      } catch (err) {
+        if (err.code === "auth/user-not-found") {
+          msg.textContent = "No account found. Please sign up first.";
+        } else if (err.code === "auth/wrong-password") {
+          msg.textContent = "Incorrect password. Try again.";
+        } else {
+          msg.textContent = "Login failed: " + err.message.replace("Firebase:", "").trim();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

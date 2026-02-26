@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yaksha Dedeepya - Event Details</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #000, #3b0000);
+      color: #FFD700;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px;
+    }
+
+    header img {
+      height: 90px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px gold;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-top: 10px;
+      text-shadow: 0 0 25px gold;
+    }
+
+    .event-details {
+      margin: 40px auto;
+      padding: 20px;
+      max-width: 700px;
+      border: 1px solid gold;
+      border-radius: 10px;
+      background: rgba(255, 215, 0, 0.05);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+    }
+
+    .event-details h2 {
+      color: #FFD700;
+      text-shadow: 0 0 20px gold;
+      margin-bottom: 15px;
+    }
+
+    .event-details p {
+      font-size: 1.1em;
+      color: #f5d36f;
+      margin: 8px 0;
+    }
+
+    /* --- Video Section --- */
+    .video-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    iframe {
+      width: 80%;
+      max-width: 700px;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 0 25px gold;
+    }
+
+    /* --- Buttons --- */
+    .nav-buttons {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .nav-buttons button {
+      padding: 12px 30px;
+      font-size: 1em;
+      color: gold;
+      background: transparent;
+      border: 2px solid gold;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 20px rgba(255,215,0,0.3);
+      margin: 10px;
+    }
+
+    .nav-buttons button:hover {
+      background: gold;
+      color: #3b0000;
+      box-shadow: 0 0 30px gold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      border-top: 1px solid gold;
+      background: rgba(255, 215, 0, 0.05);
+      color: #FFD700;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      iframe { width: 95%; height: 220px; }
+      h1 { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo123.jpeg" alt="Yaksha Dedeepya Logo">
+  </header>
+
+  <h1>ದೊಂದಿ ಬೆಳಕಿನ ಯಕ್ಷಗಾನ</h1>
+
+  <section class="ಯಕ್ಷ ದೇದಿಪ್ಯ">
+    <h2>ಕಾರ್ಯಕ್ರಮದ ವಿವರ</h2>
+    <p><b>ದಿನಾಂಕ:</b> 15 ನವೆಂಬರ್ 2025</p>
+    <p><b>ಸಮಯ:</b> ಸಂಜೆ 6:30 ರಿಂದ ಬೆಳಗಿನ 1:30 ರವರೆಗೆ</p>
+    <p><b>ಸ್ಥಳ:</b> ಹೈಕಾಡಿ ಪ್ರಾಥಮಿಕ ಶಾಲಾ ಆವರಣ, ಹೈಕಾಡಿ</p>
+  </section>
+
+  <div class="video-container">
+    <!-- 🎭 Replace the YouTube link below with your own video link -->
+    <iframe 
+      src="MYVEDIO.mp4"
+      title="Yakshagana Performance Video"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="nav-buttons">
+    <button onclick="window.location.href='gallery.html'">⬅ Back</button>
+    <button onclick="window.location.href='content.html'">➡ continue</button>
+
+  </div>
+
+  <footer>©  © 2025 ಯಕ್ಷ ದೇದಿಪ್ಯ | VAISHNAVI HAIKADY</a> <br>
+    <span>Powered by Smart Creations Education Trust ®</span></footer>
+
+</body>
+</html>
